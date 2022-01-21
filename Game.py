@@ -26,7 +26,7 @@ apple = Apple(canvaJeu)
 def play():
     snake.move(canvaJeu)
     snake.eat(canvaJeu,apple)
-    root.after(50,play) # Speed of game, actually 50ms
+    root.after(80,play) # Speed of game, actually 80ms
 
 def moveWithKey(e):
     snake.changeDirection(e)

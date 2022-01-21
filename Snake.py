@@ -14,7 +14,7 @@ class Snake:
     # Function to move
     def move(self,canva):
         if(self.dx == 10):
-            self.coordX+=10
+            self.coordX+=20
             j=len(self.snakeList)-1
             while(j>=0):
                 if(j==0):
@@ -24,7 +24,7 @@ class Snake:
                 j-=1
 
         if(self.dx == -10):
-            self.coordX-=10
+            self.coordX-=20
             j=len(self.snakeList)-1
             while(j>=0):
                 if(j==0):
@@ -34,7 +34,7 @@ class Snake:
                 j-=1
 
         if(self.dy == 10):
-            self.coordY+=10
+            self.coordY+=20
             j=len(self.snakeList)-1
             while(j>=0):
                 if(j==0):
@@ -44,7 +44,7 @@ class Snake:
                 j-=1
 
         if(self.dy == -10):
-            self.coordY-=10
+            self.coordY-=20
             j=len(self.snakeList)-1
             while(j>=0):
                 if(j==0):
@@ -85,6 +85,8 @@ class Snake:
     def eat(self,canva,apple):
         j = len(self.snakeList)-1
         if((self.coordX==apple.x0)and(self.coordY==apple.y0)):
-            #print("ate")
             apple.newApple(canva)
+            for i in range(1,len(self.snakeList)):
+                if((apple.x0 == canva.coords(self.snakeList[i])[0]) and (apple.y0==canva.coords(self.snakeList[i])[1])):
+                    apple.newApple(canva)
             self.snakeList.append(canva.create_rectangle(canva.coords(self.snakeList[j-1])[0],canva.coords(self.snakeList[j-1])[1],canva.coords(self.snakeList[j-1])[2],canva.coords(self.snakeList[j-1])[3],outline='', fill="green"))
